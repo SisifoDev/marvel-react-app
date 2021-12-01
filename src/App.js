@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import { Card } from "./components/Card";
 
 function App() {
   const url = process.env.REACT_APP_URL;
@@ -16,14 +17,12 @@ function App() {
   return (
     <div className="App">
       {characters.map((character) => (
-        <div className="card" key={character.id}>
-          <h1>{character.title}</h1>
-          <h2>{character.modified}</h2>
-          <img
-            src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-            alt={character.title}
-          />
-        </div>
+        <Card
+          key={character.id}
+          title={character.title}
+          date={character.modified}
+          img={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+        />
       ))}
     </div>
   );
